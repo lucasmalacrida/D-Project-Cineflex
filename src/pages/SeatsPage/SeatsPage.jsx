@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export default function SeatsPage() {
 
@@ -64,7 +64,8 @@ const PageContainer = styled.div`
     margin-top: 30px;
     padding-bottom: 120px;
     padding-top: 70px;
-`
+`;
+
 const SeatsContainer = styled.div`
     width: 330px;
     display: flex;
@@ -73,7 +74,8 @@ const SeatsContainer = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 20px;
-`
+`;
+
 const FormContainer = styled.div`
     width: calc(100vw - 40px); 
     display: flex;
@@ -87,14 +89,16 @@ const FormContainer = styled.div`
     input {
         width: calc(100vw - 60px);
     }
-`
+`;
+
 const CaptionContainer = styled.div`
     display: flex;
     flex-direction: row;
     width: 300px;
     justify-content: space-between;
     margin: 20px;
-`
+`;
+
 const CaptionCircle = styled.div`
     border: 1px solid blue;         // Essa cor deve mudar
     background-color: lightblue;    // Essa cor deve mudar
@@ -105,13 +109,15 @@ const CaptionCircle = styled.div`
     align-items: center;
     justify-content: center;
     margin: 5px 3px;
-`
+`;
+
 const CaptionItem = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 12px;
-`
+`;
+
 const SeatItem = styled.div`
     border: 1px solid blue;         // Essa cor deve mudar
     background-color: lightblue;    // Essa cor deve mudar
@@ -124,7 +130,8 @@ const SeatItem = styled.div`
     align-items: center;
     justify-content: center;
     margin: 5px 3px;
-`
+`;
+
 const FooterContainer = styled.div`
     width: 100%;
     height: 120px;
@@ -162,4 +169,4 @@ const FooterContainer = styled.div`
             }
         }
     }
-`
+`;

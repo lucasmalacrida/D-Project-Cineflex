@@ -1,7 +1,12 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 const ResetStyle = createGlobalStyle`
-    html, body, div, span, applet, object, iframe,
+	/* http://meyerweb.com/eric/tools/css/reset/ 
+	v2.0 | 20110126
+	License: none (public domain)
+	*/
+
+	html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 	a, abbr, acronym, address, big, cite, code,
 	del, dfn, em, img, ins, kbd, q, s, samp,
@@ -34,16 +39,25 @@ const ResetStyle = createGlobalStyle`
 	}
 	blockquote, q {
 		quotes: none;
+		&:before, &:after{
+			content: '';
+			content: none;
+		}
 	}
-	blockquote:before, blockquote:after,
-	q:before, q:after {
-		content: '';
-		content: none;
-	}
+
 	table {
 		border-collapse: collapse;
 		border-spacing: 0;
 	}
-`
 
-export default ResetStyle
+	button {
+		all: unset;
+		cursor: pointer;
+
+		&:disabled {
+		cursor: inherit;
+		}
+	}
+`;
+
+export default ResetStyle;

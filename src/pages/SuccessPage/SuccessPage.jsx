@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export default function SuccessPage() {
 
@@ -57,7 +57,8 @@ const PageContainer = styled.div`
         text-align: center;
         color: #247A6B;
     }
-`
+`;
+
 const TextContainer = styled.div`
     width: 100%;
     display: flex;
@@ -68,4 +69,4 @@ const TextContainer = styled.div`
         font-weight: bold;
         margin-bottom: 10px;
     }
-`
+`;

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export default function HomePage() {
     return (
@@ -37,14 +37,16 @@ const PageContainer = styled.div`
     color: #293845;
     margin-top: 30px;
     padding-top: 70px;
-`
+`;
+
 const ListContainer = styled.div`
     width: 330px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     padding: 10px;
-`
+`;
+
 const MovieContainer = styled.div`
     width: 145px;
     height: 210px;
@@ -58,4 +60,4 @@ const MovieContainer = styled.div`
         width: 130px;
         height: 190px;
     }
-`
+`;
