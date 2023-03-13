@@ -7,7 +7,7 @@ export default function Session({ id, weekday, date, showtimes }) {
             {weekday} - {date}
             <ButtonsContainer data-test="showtime">
                 {showtimes.map( st => 
-                    <Link to="/assentos/"><button key={st.id}>{st.name}</button></Link>
+                    <Link key={st.id} to="/assentos/"><button>{st.name}</button></Link>
                 )}
             </ButtonsContainer>
         </SessionContainer>

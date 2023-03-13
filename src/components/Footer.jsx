@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export default function Footer( {session} ) {
+export default function Footer({ title, posterURL, session }) {
     return (
         <FooterContainer data-test="footer">
             <div>
-                <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster" />
+                <img src={posterURL} alt="poster" />
             </div>
             <div>
-                <p>Tudo em todo lugar ao mesmo tempo</p>
+                <p>{title}</p>
                 {(Object.keys(session).length !== 0) && <p>{session.date + " - " + session.time}</p>}
             </div>
         </FooterContainer>

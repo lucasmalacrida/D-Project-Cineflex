@@ -1,53 +1,31 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import styled from "styled-components";
 
 import Session from "../../components/SessionsPage/Session";
 import Footer from "../../components/Footer";
 
-const sessions = [
-    {
-        "id": 24062021,
-        "weekday": "Quinta-feira",
-        "date": "24/06/2021",
-        "showtimes": [
-            {
-                "name": "15:00",
-                "id": 1
-            },
-            {
-                "name": "19:00",
-                "id": 2
-            }
-        ]
-    },
-    {
-        "id": 25062021,
-        "weekday": "Sexta-feira",
-        "date": "25/06/2021",
-        "showtimes": [
-            {
-                "name": "16:00",
-                "id": 3
-            },
-            {
-                "name": "20:00",
-                "id": 4
-            }
-        ]
-    }
-];
-
 export default function SessionsPage() {
+    const { idFilme } = useParams();
+    const [sessions, setSessions] = useState({ title: '', posterURL:'', days: [] });
+
+    useEffect(() => {
+        axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`)
+            .then((res) => setSessions(res.data))
+            .catch((err) => alert("Erro ao Carregar Sessões."))
+    }, [idFilme]);
 
     return (
         <PageContainer>
             Selecione o horário
             <div>
-                {sessions.map( s => 
+                {sessions.days.map(s =>
                     <Session key={s.id} id={s.id} weekday={s.weekday} date={s.date} showtimes={s.showtimes} />
                 )}
             </div>
 
-            <Footer session={{}}/>
+            <Footer title={sessions.title} posterURL={sessions.posterURL} session={{}} />
         </PageContainer>
     )
 }

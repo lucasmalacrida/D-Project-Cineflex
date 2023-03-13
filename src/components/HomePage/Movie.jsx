@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function Movie({ id, title, posterURL, overview, releaseDate }) {
     return (
         <MovieContainer data-test="movie">
-            <Link to="/sessoes/">
+            <Link to={`/sessoes/${id}`}>
                 <img src={posterURL} alt="poster" />
             </Link>
         </MovieContainer>
@@ -25,5 +25,4 @@ const MovieContainer = styled.div`
         height: 190px;
         
     }
-    cursor: pointer;
 `;
