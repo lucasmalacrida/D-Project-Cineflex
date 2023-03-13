@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import styled from "styled-components";
 
 import Seat from "../../components/SeatsPage/Seat";
@@ -5,83 +8,33 @@ import Caption from "../../components/SeatsPage/Caption";
 import Form from "../../components/SeatsPage/Form";
 import Footer from "../../components/Footer";
 
-import { color1Selected, color2Selected, color1Available, color2Available, color1Unavailable, color2Unavailable } from "../../colors/seatsColors";
-
-const seats = [
-    {
-        "id": 1,
-        "name": "01",
-        "isAvailable": true,
-    },
-    {
-        "id": 2,
-        "name": "02",
-        "isAvailable": true,
-    },
-    {
-        "id": 3,
-        "name": "03",
-        "isAvailable": true,
-    },
-    {
-        "id": 4,
-        "name": "04",
-        "isAvailable": false,
-    },
-    {
-        "id": 5,
-        "name": "05",
-        "isAvailable": false,
-    },
-    {
-        "id": 6,
-        "name": "06",
-        "isAvailable": false,
-    },
-    {
-        "id": 7,
-        "name": "07",
-        "isAvailable": false,
-    },
-    {
-        "id": 8,
-        "name": "08",
-        "isAvailable": true,
-    },
-    {
-        "id": 9,
-        "name": "09",
-        "isAvailable": true,
-    },
-    {
-        "id": 10,
-        "name": "10",
-        "isAvailable": true,
-    }
-];
-
 export default function SeatsPage() {
+    const { idSessao } = useParams();
+    const [seatsObj, setSeatsObj] = useState({ movie: { title: '', posterURL: '' }, day: { weekday: '', date: '' }, seats: [] });
+
+    useEffect(() => {
+        axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`)
+            .then((res) => setSeatsObj(res.data))
+            .catch((err) => alert("Erro ao Carregar Assentos."))
+    }, [idSessao]);
 
     return (
         <PageContainer>
             Selecione o(s) assento(s)
 
             <SeatsContainer>
-                {seats.map(s => <Seat key={s.id} name={s.name} isAvailable={s.isAvailable} />)}
+                {seatsObj.seats.map(s => <Seat key={s.id} name={s.name} isAvailable={s.isAvailable} />)}
             </SeatsContainer>
 
-            <Caption 
-                color1Selected={color1Selected}
-                color2Selected={color2Selected}
-                color1Available={color1Available}
-                color2Available={color2Available}
-                color1Unavailable={color1Unavailable}
-                color2Unavailable={color2Unavailable}
-            />
+            <Caption />
 
             <Form />
 
-            <Footer session={{ date: 'Sexta', time: '16h00' }} />
+            <Footer
+                title={seatsObj.movie.title}
+                posterURL={seatsObj.movie.posterURL}
+                session={{ date: seatsObj.day.weekday, time: seatsObj.day.date }}
+            />
         </PageContainer>
     )
 }
