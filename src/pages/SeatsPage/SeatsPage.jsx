@@ -8,7 +8,7 @@ import Caption from "../../components/SeatsPage/Caption";
 import Form from "../../components/SeatsPage/Form";
 import Footer from "../../components/Footer";
 
-export default function SeatsPage() {
+export default function SeatsPage({ selectedSeats, setSelectedSeats }) {
     const { idSessao } = useParams();
     const [seatsObj, setSeatsObj] = useState({ movie: { title: '', posterURL: '' }, day: { weekday: '', date: '' }, seats: [] });
 
@@ -23,18 +23,23 @@ export default function SeatsPage() {
             Selecione o(s) assento(s)
 
             <SeatsContainer>
-                {seatsObj.seats.map(s => <Seat key={s.id} name={s.name} isAvailable={s.isAvailable} />)}
+                {seatsObj.seats.map(s =>
+                    <Seat
+                        key={s.id}
+                        name={s.name}
+                        isAvailable={s.isAvailable}
+                        selectedSeats={selectedSeats}
+                        setSelectedSeats={setSelectedSeats}
+                    />)}
             </SeatsContainer>
 
             <Caption />
 
             <Form />
 
-            <Footer
-                title={seatsObj.movie.title}
-                posterURL={seatsObj.movie.posterURL}
-                session={{ date: seatsObj.day.weekday, time: seatsObj.day.date }}
-            />
+            <Footer title={seatsObj.movie.title} posterURL={seatsObj.movie.posterURL} >
+                <p>{`${seatsObj.day.weekday} - ${seatsObj.day.date}`}</p>
+            </Footer>
         </PageContainer>
     )
 }

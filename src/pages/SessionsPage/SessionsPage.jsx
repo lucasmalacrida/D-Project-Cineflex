@@ -25,7 +25,7 @@ export default function SessionsPage() {
                 )}
             </div>
 
-            <Footer title={sessions.title} posterURL={sessions.posterURL} session={{}} />
+            <Footer title={sessions.title} posterURL={sessions.posterURL} />
         </PageContainer>
     )
 }

@@ -35,6 +35,13 @@ const GlobalStyle = createGlobalStyle`
 		}
 		
 	}
+	a {
+		&:-webkit-any-link {
+			text-decoration: none;
+			color: white;
+			cursor: pointer;
+		}
+	}
 `
 
 export default GlobalStyle

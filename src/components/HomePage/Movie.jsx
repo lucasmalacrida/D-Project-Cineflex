@@ -23,6 +23,5 @@ const MovieContainer = styled.div`
     img {
         width: 130px;
         height: 190px;
-        
     }
 `;

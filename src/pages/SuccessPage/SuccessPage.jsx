@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function SuccessPage() {
+export default function SuccessPage({selectedSeats}) {
 
     return (
         <PageContainer>
@@ -41,9 +41,7 @@ const PageContainer = styled.div`
     margin: 30px 20px;
     padding-bottom: 120px;
     padding-top: 70px;
-    a {
-        text-decoration: none;
-    }
+    
     button {
         margin-top: 50px;
     }

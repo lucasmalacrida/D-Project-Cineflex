@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Footer({ title, posterURL, session }) {
+export default function Footer({ title, posterURL, children }) {
     return (
         <FooterContainer data-test="footer">
             <div>
@@ -8,7 +8,8 @@ export default function Footer({ title, posterURL, session }) {
             </div>
             <div>
                 <p>{title}</p>
-                {(Object.keys(session).length !== 0) && <p>{session.date + " - " + session.time}</p>}
+                
+                {children}
             </div>
         </FooterContainer>
     )

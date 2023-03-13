@@ -31,7 +31,4 @@ const ButtonsContainer = styled.div`
     button {
         margin-right: 20px;
     }
-    a {
-        text-decoration: none;
-    }
 `;
