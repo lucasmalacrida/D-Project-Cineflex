@@ -26,7 +26,7 @@ export default function SuccessPage() {
                 <p>CPF: 123.456.789-10</p>
             </TextContainer>
 
-            <Link to="/"><button data-test="go-home-btn">Voltar para Home</button></Link>
+            <button data-test="go-home-btn"><Link to="/">Voltar para Home</Link></button>
         </PageContainer>
     )
 }

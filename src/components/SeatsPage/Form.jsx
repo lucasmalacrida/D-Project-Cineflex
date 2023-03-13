@@ -10,7 +10,7 @@ export default function Form() {
             CPF do Comprador:
             <input placeholder="Digite seu CPF..." data-test="client-cpf" />
 
-            <Link to="/sucesso"><button data-test="book-seat-btn">Reservar Assento(s)</button></Link>
+            <button data-test="book-seat-btn"><Link to="/sucesso">Reservar Assento(s)</Link></button>
         </FormContainer>
     )
 }
