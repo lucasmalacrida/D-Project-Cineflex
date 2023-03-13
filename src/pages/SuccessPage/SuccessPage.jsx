@@ -1,37 +1,38 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function SuccessPage({selectedSeats}) {
-    // function resetOrder(){
-    //     setSelectedSeats([]);
-    //     setBuyerName("");
-    //     setBuyerCPF("");
-    // }
+export default function SuccessPage({ movieInfo, setMovieInfo, selectedSeats, setSelectedSeats, buyerName, setBuyerName, buyerCPF, setBuyerCPF }) {
+    function resetOrder() {
+        setMovieInfo({});
+        setSelectedSeats([]);
+        setBuyerName("");
+        setBuyerCPF("");
+        navigate("/");
+    }
 
+    const navigate = useNavigate();
     return (
         <PageContainer>
             <h1>Pedido feito <br /> com sucesso!</h1>
 
             <TextContainer data-test="movie-info">
                 <strong><p>Filme e sessão</p></strong>
-                <p>Tudo em todo lugar ao mesmo tempo</p>
-                <p>03/03/2023 - 14:00</p>
+                <p>{movieInfo.title}</p>
+                <p>{movieInfo.day} - {movieInfo.time}</p>
             </TextContainer>
 
             <TextContainer data-test="seats-info">
                 <strong><p>Ingressos</p></strong>
-                <p>Assento 01</p>
-                <p>Assento 02</p>
-                <p>Assento 03</p>
+                {selectedSeats.map(s => <p key={s.id}>Assento {s.name}</p>)}
             </TextContainer>
 
             <TextContainer data-test="client-info">
                 <strong><p>Comprador</p></strong>
-                <p>Nome: Letícia Chijo</p>
-                <p>CPF: 123.456.789-10</p>
+                <p>Nome: {buyerName}</p>
+                <p>CPF: {buyerCPF}</p>
             </TextContainer>
 
-            <button data-test="go-home-btn"><Link to="/">Voltar para Home</Link></button>
+            <button onClick={resetOrder} data-test="go-home-btn">Voltar para Home</button>
         </PageContainer>
     )
 }

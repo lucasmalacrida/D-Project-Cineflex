@@ -8,15 +8,23 @@ import Caption from "../../components/SeatsPage/Caption";
 import Form from "../../components/SeatsPage/Form";
 import Footer from "../../components/Footer";
 
-export default function SeatsPage({ selectedSeats, setSelectedSeats, buyerName, setBuyerName, buyerCPF, setBuyerCPF }) {
+export default function SeatsPage({ movieInfo, setMovieInfo, selectedSeats, setSelectedSeats, buyerName, setBuyerName, buyerCPF, setBuyerCPF }) {
     const { idSessao } = useParams();
     const [seatsObj, setSeatsObj] = useState({ movie: { title: '', posterURL: '' }, day: { weekday: '', date: '' }, seats: [] });
 
     useEffect(() => {
         axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`)
-            .then((res) => setSeatsObj(res.data))
+            .then((res) => loadSeats(res))
             .catch((err) => alert("Erro ao Carregar Assentos."))
+
     }, [idSessao]);
+
+    function loadSeats(res){
+        const response = res.data;
+        const newMovieInfo = {title: response.movie.title, day: response.day.date, time: response.name};
+        setSeatsObj(response);
+        setMovieInfo(newMovieInfo);
+    }
 
     return (
         <PageContainer>

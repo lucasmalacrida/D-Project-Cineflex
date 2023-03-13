@@ -8,6 +8,7 @@ import SessionsPage from "./pages/SessionsPage/SessionsPage";
 import SuccessPage from "./pages/SuccessPage/SuccessPage";
 
 export default function App() {
+    const [movieInfo, setMovieInfo] = useState({});
     const [selectedSeats,setSelectedSeats] = useState([]);
     const [buyerName,setBuyerName] = useState("");
     const [buyerCPF,setBuyerCPF] = useState("");
@@ -23,6 +24,8 @@ export default function App() {
                     <Route 
                         path="/assentos/:idSessao"
                         element={<SeatsPage
+                                    movieInfo={movieInfo}
+                                    setMovieInfo={setMovieInfo}
                                     selectedSeats={selectedSeats}
                                     setSelectedSeats={setSelectedSeats}
                                     buyerName={buyerName}
@@ -31,7 +34,19 @@ export default function App() {
                                     setBuyerCPF={setBuyerCPF}
                                 />}
                     />
-                    <Route path="/sucesso" element={<SuccessPage selectedSeats={selectedSeats} />} />
+                    <Route
+                        path="/sucesso"
+                        element={<SuccessPage
+                                    movieInfo={movieInfo}
+                                    setMovieInfo={setMovieInfo}
+                                    selectedSeats={selectedSeats}
+                                    setSelectedSeats={setSelectedSeats}
+                                    buyerName={buyerName}
+                                    setBuyerName={setBuyerName}
+                                    buyerCPF={buyerCPF}
+                                    setBuyerCPF={setBuyerCPF}
+                                />}
+                    />
                 </Routes>
             </BrowserRouter>
         </>
