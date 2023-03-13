@@ -4,7 +4,7 @@ import { color1Selected, color2Selected, color1Available, color2Available, color
 
 export default function Seat({ id, name, isAvailable }) {
     return (
-        <SeatItem kind={isAvailable? 'available' : 'unavailable'}>
+        <SeatItem kind={isAvailable? 'available' : 'unavailable'} data-test="seat">
             {name}
         </SeatItem>
     )

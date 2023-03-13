@@ -58,6 +58,13 @@ const ResetStyle = createGlobalStyle`
 		cursor: inherit;
 		}
 	}
+	a {
+		&:-webkit-any-link {
+		text-decoration: none;
+		color: white;
+		cursor: pointer;
+	}
+	}
 `;
 
 export default ResetStyle;

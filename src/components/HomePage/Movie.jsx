@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export default function Movie({ id, title, posterURL, overview, releaseDate }) {
     return (
-        <MovieContainer>
+        <MovieContainer data-test="movie">
             <Link to="/sessoes/">
                 <img src={posterURL} alt="poster" />
             </Link>

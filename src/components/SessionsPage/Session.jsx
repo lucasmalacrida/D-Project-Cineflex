@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 export default function Session({ id, weekday, date, showtimes }) {
     return (
-        <SessionContainer>
+        <SessionContainer data-test="movie-day">
             {weekday} - {date}
-            <ButtonsContainer>
+            <ButtonsContainer data-test="showtime">
                 {showtimes.map( st => 
-                    <button key={st.id}><Link to="/assentos/">{st.name}</Link></button>
+                    <Link to="/assentos/"><button key={st.id}>{st.name}</button></Link>
                 )}
             </ButtonsContainer>
         </SessionContainer>
