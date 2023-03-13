@@ -10,11 +10,11 @@ export default function Seat({ id, name, isAvailable, selectedSeats, setSelected
         switch (kind) {
             case 'selected':
                 setKind('available');
-                setSelectedSeats([...selectedSeats].filter( s => s !== name));
+                setSelectedSeats([...selectedSeats].filter( s => s.id !== id));
                 break;
             case 'available':
                 setKind('selected');
-                const newArraySorted = [...selectedSeats,name].map( s => parseInt(s)).sort((a,b) => a-b).map( s => s.toString());
+                const newArraySorted = [...selectedSeats,{id,name}];
                 setSelectedSeats(newArraySorted);
                 break;
             case 'unavailable':
@@ -24,7 +24,7 @@ export default function Seat({ id, name, isAvailable, selectedSeats, setSelected
                 break;
         }
     }
-    console.log(selectedSeats);
+    
     return (
         <SeatItem
             kind={kind}

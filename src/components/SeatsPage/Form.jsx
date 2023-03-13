@@ -1,21 +1,50 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import styled from "styled-components";
 
-export default function Form() {
+export default function Form({ selectedSeats, buyerName, setBuyerName, buyerCPF, setBuyerCPF }) {
+    const navigate = useNavigate();
+    function sendBuyerData(e) {
+        e.preventDefault();
+
+        const newOrder = {
+            ids: selectedSeats.map(s => s.id),
+            name: buyerName,
+            cpf: buyerCPF
+        };
+        console.log(newOrder);
+
+        axios.post('https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many', newOrder)
+            .then((res) => navigate("/sucesso"))
+            .catch((err) => alert("Erro ao Reservar Assentos"));
+    }
+
     return (
-        <FormContainer>
-            Nome do Comprador:
-            <input placeholder="Digite seu nome..." data-test="client-name" />
+        <FormContainer onSubmit={sendBuyerData}>
+            <label htmlFor="nome">Nome do Comprador:</label>
+            <input
+                id="nome"
+                placeholder="Digite seu nome..."
+                value={buyerName}
+                onChange={e => setBuyerName(e.target.value)}
+                data-test="client-name"
+            />
 
-            CPF do Comprador:
-            <input placeholder="Digite seu CPF..." data-test="client-cpf" />
+            <label htmlFor="cpf">CPF do Comprador:</label>
+            <input
+                id="cpf"
+                placeholder="Digite seu CPF..."
+                value={buyerCPF}
+                onChange={e => setBuyerCPF(e.target.value)}
+                data-test="client-cpf"
+            />
 
-            <button data-test="book-seat-btn"><Link to="/sucesso">Reservar Assento(s)</Link></button>
+            <button type="submit" data-test="book-seat-btn">Reservar Assento(s)</button>
         </FormContainer>
     )
 }
 
-const FormContainer = styled.div`
+const FormContainer = styled.form`
     width: calc(100vw - 40px); 
     display: flex;
     flex-direction: column;

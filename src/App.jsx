@@ -9,6 +9,9 @@ import SuccessPage from "./pages/SuccessPage/SuccessPage";
 
 export default function App() {
     const [selectedSeats,setSelectedSeats] = useState([]);
+    const [buyerName,setBuyerName] = useState("");
+    const [buyerCPF,setBuyerCPF] = useState("");
+    
     return (
         <>
             <BrowserRouter>
@@ -17,7 +20,17 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/sessoes/:idFilme" element={<SessionsPage />} />
-                    <Route path="/assentos/:idSessao" element={<SeatsPage selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} />} />
+                    <Route 
+                        path="/assentos/:idSessao"
+                        element={<SeatsPage
+                                    selectedSeats={selectedSeats}
+                                    setSelectedSeats={setSelectedSeats}
+                                    buyerName={buyerName}
+                                    setBuyerName={setBuyerName}
+                                    buyerCPF={buyerCPF}
+                                    setBuyerCPF={setBuyerCPF}
+                                />}
+                    />
                     <Route path="/sucesso" element={<SuccessPage selectedSeats={selectedSeats} />} />
                 </Routes>
             </BrowserRouter>

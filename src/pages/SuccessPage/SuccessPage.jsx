@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function SuccessPage({selectedSeats}) {
+    // function resetOrder(){
+    //     setSelectedSeats([]);
+    //     setBuyerName("");
+    //     setBuyerCPF("");
+    // }
 
     return (
         <PageContainer>
