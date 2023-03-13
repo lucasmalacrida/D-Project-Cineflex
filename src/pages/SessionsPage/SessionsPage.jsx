@@ -1,45 +1,53 @@
 import styled from "styled-components";
 
+import Session from "../../components/SessionsPage/Session";
+import Footer from "../../components/Footer";
+
+const sessions = [
+    {
+        "id": 24062021,
+        "weekday": "Quinta-feira",
+        "date": "24/06/2021",
+        "showtimes": [
+            {
+                "name": "15:00",
+                "id": 1
+            },
+            {
+                "name": "19:00",
+                "id": 2
+            }
+        ]
+    },
+    {
+        "id": 25062021,
+        "weekday": "Sexta-feira",
+        "date": "25/06/2021",
+        "showtimes": [
+            {
+                "name": "16:00",
+                "id": 3
+            },
+            {
+                "name": "20:00",
+                "id": 4
+            }
+        ]
+    }
+];
+
 export default function SessionsPage() {
 
     return (
         <PageContainer>
             Selecione o horário
             <div>
-                <SessionContainer>
-                    Sexta - 03/03/2023
-                    <ButtonsContainer>
-                        <button>14:00</button>
-                        <button>15:00</button>
-                    </ButtonsContainer>
-                </SessionContainer>
-
-                <SessionContainer>
-                    Sexta - 03/03/2023
-                    <ButtonsContainer>
-                        <button>14:00</button>
-                        <button>15:00</button>
-                    </ButtonsContainer>
-                </SessionContainer>
-
-                <SessionContainer>
-                    Sexta - 03/03/2023
-                    <ButtonsContainer>
-                        <button>14:00</button>
-                        <button>15:00</button>
-                    </ButtonsContainer>
-                </SessionContainer>
+                {sessions.map( s => 
+                    <Session key={s.id} id={s.id} weekday={s.weekday} date={s.date} showtimes={s.showtimes} />
+                )}
             </div>
 
-            <FooterContainer>
-                <div>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster" />
-                </div>
-                <div>
-                    <p>Tudo em todo lugar ao mesmo tempo</p>
-                </div>
-            </FooterContainer>
-
+            <Footer session={{}}/>
         </PageContainer>
     )
 }
@@ -56,66 +64,5 @@ const PageContainer = styled.div`
     padding-top: 70px;
     div {
         margin-top: 20px;
-    }
-`;
-
-const SessionContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    font-family: 'Roboto';
-    font-size: 20px;
-    color: #293845;
-    padding: 0 20px;
-`;
-
-const ButtonsContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin: 20px 0;
-    button {
-        margin-right: 20px;
-    }
-    a {
-        text-decoration: none;
-    }
-`;
-
-const FooterContainer = styled.div`
-    width: 100%;
-    height: 120px;
-    background-color: #C3CFD9;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: 20px;
-    position: fixed;
-    bottom: 0;
-
-    div:nth-child(1) {
-        box-shadow: 0px 2px 4px 2px #0000001A;
-        border-radius: 3px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
-        margin: 12px;
-        img {
-            width: 50px;
-            height: 70px;
-            padding: 8px;
-        }
-    }
-
-    div:nth-child(2) {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        p {
-            text-align: left;
-            &:nth-child(2) {
-                margin-top: 10px;
-            }
-        }
     }
 `;

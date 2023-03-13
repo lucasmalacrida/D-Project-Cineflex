@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function SuccessPage() {
@@ -25,7 +26,7 @@ export default function SuccessPage() {
                 <p>CPF: 123.456.789-10</p>
             </TextContainer>
 
-            <button>Voltar para Home</button>
+            <button><Link to="/">Voltar para Home</Link></button>
         </PageContainer>
     )
 }

@@ -1,4 +1,22 @@
 import styled from "styled-components";
+import Movie from "../../components/HomePage/Movie";
+
+const movies = [
+	{
+        id: 1,
+        title: "2067",
+        posterURL: "https://image.tmdb.org/t/p/w500/7D430eqZj8y3oVkLFfsWXGRcpEG.jpg",
+        overview: "A lowly utility worker is called to the future by a mysterious radio signal, he must leave his dying wife to embark on a journey that will force him to face his deepest fears in an attempt to change the fabric of reality and save humankind from its greatest environmental crisis yet.",
+        releaseDate: "2020-10-01T00:00:00.000Z",
+    },
+    {
+        id: 2,
+        title: "Welcome to Sudden Death",
+        posterURL: "https://image.tmdb.org/t/p/w500/elZ6JCzSEvFOq4gNjNeZsnRFsvj.jpg",
+        overview: "Jesse Freeman is a former special forces officer and explosives expert now working a regular job as a security guard in a state-of-the-art basketball arena. Trouble erupts when a tech-savvy cadre of terrorists kidnap the team's owner and Jesse's daughter during opening night. Facing a ticking clock and impossible odds, it's up to Jesse to not only save them but also a full house of fans in this highly charged action thriller.",
+        releaseDate: "2020-09-29T00:00:00.000Z",
+    }
+];
 
 export default function HomePage() {
     return (
@@ -6,21 +24,14 @@ export default function HomePage() {
             Selecione o filme
 
             <ListContainer>
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-                </MovieContainer>
-
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-                </MovieContainer>
-
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-                </MovieContainer>
-
-                <MovieContainer>
-                    <img src={"https://br.web.img2.acsta.net/pictures/22/05/16/17/59/5165498.jpg"} alt="poster"/>
-                </MovieContainer>
+                {movies.map( m => <Movie
+                        key={m.key}
+                        id={m.id}
+                        title={m.title}
+                        posterURL={m.posterURL}
+                        overview={m.overview}
+                        releaseDate={m.releaseDate}
+                        />)}
             </ListContainer>
 
         </PageContainer>
@@ -45,19 +56,4 @@ const ListContainer = styled.div`
     flex-wrap: wrap;
     flex-direction: row;
     padding: 10px;
-`;
-
-const MovieContainer = styled.div`
-    width: 145px;
-    height: 210px;
-    box-shadow: 0px 2px 4px 2px #0000001A;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    img {
-        width: 130px;
-        height: 190px;
-    }
 `;
