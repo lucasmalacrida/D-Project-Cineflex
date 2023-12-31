@@ -16,7 +16,7 @@ export default function SeatsPage({ movieInfo, setMovieInfo, selectedSeats, setS
         axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`)
             .then((res) => {
                 const response = res.data;
-                const newMovieInfo = { title: response.movie.title, day: response.day.date, time: response.name };
+                const newMovieInfo = { title: response.movie.title, day: response.day.date, time: response.name, session: response.movie.id };
                 setSeatsObj(response);
                 setMovieInfo(newMovieInfo);
             })

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import styled from "styled-components";
 
+import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage/HomePage";
 import SeatsPage from "./pages/SeatsPage/SeatsPage";
 import SessionsPage from "./pages/SessionsPage/SessionsPage";
@@ -18,7 +18,7 @@ export default function App() {
     return (
         <>
             <BrowserRouter>
-                <NavContainer>CINEFLEX</NavContainer>
+                <Navbar movieInfo={movieInfo} />
 
                 <Routes>
                     <Route path="/" element={<HomePage />} />
@@ -36,22 +36,3 @@ export default function App() {
         </>
     )
 }
-
-const NavContainer = styled.div`
-    width: 100%;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #C3CFD9;
-    color: #E8833A;
-    font-family: 'Roboto', sans-serif;
-    font-size: 34px;
-    position: fixed;
-    top: 0;
-    left:0;
-    a {
-        text-decoration: none;
-        color: #E8833A;
-    }
-`;

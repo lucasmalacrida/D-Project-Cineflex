@@ -19,7 +19,7 @@ export default function SessionsPage() {
     return (
         <PageContainer>
             Selecione o horário
-            
+
             <div>
                 {sessions.days.map(s =>
                     <Session key={s.id} id={s.id} weekday={s.weekday} date={s.date} showtimes={s.showtimes} />
