@@ -8,7 +8,7 @@ import Footer from "../../components/Footer";
 
 export default function SessionsPage() {
     const { idFilme } = useParams();
-    const [sessions, setSessions] = useState({ title: '', posterURL:'', days: [] });
+    const [sessions, setSessions] = useState({ title: '', posterURL: '', days: [] });
 
     useEffect(() => {
         axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`)
@@ -19,6 +19,7 @@ export default function SessionsPage() {
     return (
         <PageContainer>
             Selecione o horário
+            
             <div>
                 {sessions.days.map(s =>
                     <Session key={s.id} id={s.id} weekday={s.weekday} date={s.date} showtimes={s.showtimes} />

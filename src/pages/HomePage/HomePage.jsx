@@ -14,7 +14,7 @@ export default function HomePage() {
 
     return (
         <PageContainer>
-            Selecione o filme
+            <p>Selecione o filme</p>
 
             <ListContainer>
                 {movies.map(m => <Movie
@@ -48,5 +48,25 @@ const ListContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    padding: 10px;
+    padding: 10px 0px;
+
+    @media (min-width: 540px) {
+        width: 495px;
+    }
+
+    @media (min-width: 705px) {
+        width: 660px;
+    }
+
+    @media (min-width: 870px) {
+        width: 825px;
+    }
+
+    @media (min-width: 1035px) {
+        width: 990px;
+    }
+
+    @media (min-width: 1200px) {
+        width: 1155px;
+    }
 `;

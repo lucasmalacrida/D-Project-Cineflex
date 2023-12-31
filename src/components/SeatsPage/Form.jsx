@@ -7,6 +7,8 @@ export default function Form({ selectedSeats, buyerName, setBuyerName, buyerCPF,
     function sendBuyerData(e) {
         e.preventDefault();
 
+        if (!buyerName || !buyerCPF) return alert("Todos os campos são obrigatórios!");
+
         const newOrder = {
             ids: selectedSeats.map(s => s.id),
             name: buyerName,
@@ -56,5 +58,12 @@ const FormContainer = styled.form`
     }
     input {
         width: calc(100vw - 60px);
+    }
+
+    @media (min-width: 440px) {
+        width: 400px;
+        input {
+        width: 380px;
+    }
     }
 `;

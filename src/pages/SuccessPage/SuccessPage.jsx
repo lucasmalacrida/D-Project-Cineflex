@@ -65,7 +65,7 @@ const PageContainer = styled.div`
 `;
 
 const TextContainer = styled.div`
-    width: 100%;
+    width: 335px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

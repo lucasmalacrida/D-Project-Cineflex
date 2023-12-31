@@ -14,17 +14,15 @@ export default function SeatsPage({ movieInfo, setMovieInfo, selectedSeats, setS
 
     useEffect(() => {
         axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`)
-            .then((res) => loadSeats(res))
+            .then((res) => {
+                const response = res.data;
+                const newMovieInfo = { title: response.movie.title, day: response.day.date, time: response.name };
+                setSeatsObj(response);
+                setMovieInfo(newMovieInfo);
+            })
             .catch((err) => alert("Erro ao Carregar Assentos."))
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [idSessao]);
-
-    function loadSeats(res){
-        const response = res.data;
-        const newMovieInfo = {title: response.movie.title, day: response.day.date, time: response.name};
-        setSeatsObj(response);
-        setMovieInfo(newMovieInfo);
-    }
 
     return (
         <PageContainer>

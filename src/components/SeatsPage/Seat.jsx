@@ -10,21 +10,21 @@ export default function Seat({ id, name, isAvailable, selectedSeats, setSelected
         switch (kind) {
             case 'selected':
                 setKind('available');
-                setSelectedSeats([...selectedSeats].filter( s => s.id !== id));
+                setSelectedSeats([...selectedSeats].filter(s => s.id !== id));
                 break;
             case 'available':
                 setKind('selected');
-                const newArraySorted = [...selectedSeats,{id,name}];
+                const newArraySorted = [...selectedSeats, { id, name }];
                 setSelectedSeats(newArraySorted);
                 break;
             case 'unavailable':
                 alert("Esse assento não está disponível");
                 break;
-            default :
+            default:
                 break;
         }
     }
-    
+
     return (
         <SeatItem
             kind={kind}

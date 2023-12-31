@@ -9,10 +9,12 @@ import SuccessPage from "./pages/SuccessPage/SuccessPage";
 
 export default function App() {
     const [movieInfo, setMovieInfo] = useState({});
-    const [selectedSeats,setSelectedSeats] = useState([]);
-    const [buyerName,setBuyerName] = useState("");
-    const [buyerCPF,setBuyerCPF] = useState("");
-    
+    const [selectedSeats, setSelectedSeats] = useState([]);
+    const [buyerName, setBuyerName] = useState("");
+    const [buyerCPF, setBuyerCPF] = useState("");
+
+    const buyInfoProps = { movieInfo, setMovieInfo, selectedSeats, setSelectedSeats, buyerName, setBuyerName, buyerCPF, setBuyerCPF };
+
     return (
         <>
             <BrowserRouter>
@@ -21,31 +23,13 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/sessoes/:idFilme" element={<SessionsPage />} />
-                    <Route 
+                    <Route
                         path="/assentos/:idSessao"
-                        element={<SeatsPage
-                                    movieInfo={movieInfo}
-                                    setMovieInfo={setMovieInfo}
-                                    selectedSeats={selectedSeats}
-                                    setSelectedSeats={setSelectedSeats}
-                                    buyerName={buyerName}
-                                    setBuyerName={setBuyerName}
-                                    buyerCPF={buyerCPF}
-                                    setBuyerCPF={setBuyerCPF}
-                                />}
+                        element={<SeatsPage {...buyInfoProps} />}
                     />
                     <Route
                         path="/sucesso"
-                        element={<SuccessPage
-                                    movieInfo={movieInfo}
-                                    setMovieInfo={setMovieInfo}
-                                    selectedSeats={selectedSeats}
-                                    setSelectedSeats={setSelectedSeats}
-                                    buyerName={buyerName}
-                                    setBuyerName={setBuyerName}
-                                    buyerCPF={buyerCPF}
-                                    setBuyerCPF={setBuyerCPF}
-                                />}
+                        element={<SuccessPage {...buyInfoProps} />}
                     />
                 </Routes>
             </BrowserRouter>
@@ -65,6 +49,7 @@ const NavContainer = styled.div`
     font-size: 34px;
     position: fixed;
     top: 0;
+    left:0;
     a {
         text-decoration: none;
         color: #E8833A;
