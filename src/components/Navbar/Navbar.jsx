@@ -46,6 +46,9 @@ const NavContainer = styled.div`
     a {
         text-decoration: none;
         color: #E8833A;
+        &:visited, &:link, &:active, &:hover {
+            color: #E8833A;
+        }
     }
 `;
 

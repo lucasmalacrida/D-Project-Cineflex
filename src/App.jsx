@@ -10,10 +10,9 @@ import SuccessPage from "./pages/SuccessPage/SuccessPage";
 export default function App() {
     const [movieInfo, setMovieInfo] = useState({});
     const [selectedSeats, setSelectedSeats] = useState([]);
-    const [buyerName, setBuyerName] = useState("");
-    const [buyerCPF, setBuyerCPF] = useState("");
+    const [buyers, setBuyers] = useState([]);
 
-    const buyInfoProps = { movieInfo, setMovieInfo, selectedSeats, setSelectedSeats, buyerName, setBuyerName, buyerCPF, setBuyerCPF };
+    const buyInfoProps = { movieInfo, setMovieInfo, selectedSeats, setSelectedSeats, buyers, setBuyers };
 
     return (
         <>

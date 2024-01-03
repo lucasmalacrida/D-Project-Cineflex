@@ -8,7 +8,7 @@ import Caption from "../../components/SeatsPage/Caption";
 import Form from "../../components/SeatsPage/Form";
 import Footer from "../../components/Footer";
 
-export default function SeatsPage({ movieInfo, setMovieInfo, selectedSeats, setSelectedSeats, buyerName, setBuyerName, buyerCPF, setBuyerCPF }) {
+export default function SeatsPage({ movieInfo, setMovieInfo, selectedSeats, setSelectedSeats, buyers, setBuyers }) {
     const { idSessao } = useParams();
     const [seatsObj, setSeatsObj] = useState({ movie: { title: '', posterURL: '' }, day: { weekday: '', date: '' }, seats: [] });
 
@@ -37,17 +37,16 @@ export default function SeatsPage({ movieInfo, setMovieInfo, selectedSeats, setS
                         isAvailable={s.isAvailable}
                         selectedSeats={selectedSeats}
                         setSelectedSeats={setSelectedSeats}
+                        buyers={buyers}
+                        setBuyers={setBuyers}
                     />)}
             </SeatsContainer>
-
             <Caption />
 
             <Form
                 selectedSeats={selectedSeats}
-                buyerName={buyerName}
-                setBuyerName={setBuyerName}
-                buyerCPF={buyerCPF}
-                setBuyerCPF={setBuyerCPF}
+                buyers={buyers}
+                setBuyers={setBuyers}
             />
 
             <Footer title={seatsObj.movie.title} posterURL={seatsObj.movie.posterURL} >

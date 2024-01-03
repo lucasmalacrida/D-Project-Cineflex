@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { color1Selected, color2Selected, color1Available, color2Available, color1Unavailable, color2Unavailable } from "../../colors/seatsColors";
 
-export default function Seat({ id, name, isAvailable, selectedSeats, setSelectedSeats }) {
+export default function Seat({ id, name, isAvailable, selectedSeats, setSelectedSeats, buyers, setBuyers }) {
     const [kind, setKind] = useState(isAvailable ? 'available' : 'unavailable');
 
     function selectSeat() {
@@ -11,11 +11,12 @@ export default function Seat({ id, name, isAvailable, selectedSeats, setSelected
             case 'selected':
                 setKind('available');
                 setSelectedSeats([...selectedSeats].filter(s => s.id !== id));
+                setBuyers([...buyers].filter(b => b.idAssento !== name));
                 break;
             case 'available':
                 setKind('selected');
-                const newArraySorted = [...selectedSeats, { id, name }];
-                setSelectedSeats(newArraySorted);
+                setSelectedSeats([...selectedSeats, { id, name }]);
+                setBuyers([...buyers, { idAssento: name, nome: '', cpf: '' }]);
                 break;
             case 'unavailable':
                 alert("Esse assento não está disponível");

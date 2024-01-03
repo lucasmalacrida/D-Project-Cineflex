@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function SuccessPage({ movieInfo, setMovieInfo, selectedSeats, setSelectedSeats, buyerName, setBuyerName, buyerCPF, setBuyerCPF }) {
+export default function SuccessPage({ movieInfo, setMovieInfo, selectedSeats, setSelectedSeats, buyers, setBuyers }) {
     function resetOrder() {
         setMovieInfo({});
         setSelectedSeats([]);
-        setBuyerName("");
-        setBuyerCPF("");
+        setBuyers([]);
         navigate("/");
     }
 
@@ -26,11 +25,13 @@ export default function SuccessPage({ movieInfo, setMovieInfo, selectedSeats, se
                 {selectedSeats.map(s => <p key={s.id}>Assento {s.name}</p>)}
             </TextContainer>
 
-            <TextContainer data-test="client-info">
-                <strong><p>Comprador</p></strong>
-                <p>Nome: {buyerName}</p>
-                <p>CPF: {buyerCPF}</p>
-            </TextContainer>
+            {buyers.map(buyer =>
+                <TextContainer key={buyer.idAssento} data-test="client-info">
+                    <strong><p>Comprador do Assento {buyer.idAssento}</p></strong>
+                    <p>Nome: {buyer.nome}</p>
+                    <p>CPF: {buyer.cpf}</p>
+                </TextContainer>
+            )}
 
             <button onClick={resetOrder} data-test="go-home-btn">Voltar para Home</button>
         </PageContainer>
